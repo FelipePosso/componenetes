@@ -15,10 +15,9 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
-
     return FutureBuilder(
       future: menuProvider.cargarData(),
-      //initialData: [],
+      initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
           children: _listaItems(snapshot.data, context),
@@ -34,23 +33,12 @@ class HomePage extends StatelessWidget {
         title: Text(opt['texto']),
         leading: getIcon(opt['icon']),
         trailing: Icon(Icons.arrow_right, color: Colors.blue),
-
         onTap: () {
           Navigator.pushNamed(context, opt['ruta']);
         },
-
       );
       opciones..add(widgetTemp)..add(Divider());
     });
     return opciones;
   }
 }
-    //print(menuProvider.opciones);
-    /*menuProvider.cargarData().then( (opciones) {
-      print('_lista');
-      print(opciones);
-    });*/
-
-    /*return ListView(
-      children: _listaItems(),
-    );*/
